@@ -9,17 +9,16 @@ package shooting;
  *
  * @author ASKAR
  */
-import java.util.LinkedList;
 public class Ventana extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana
      */
-    
+    Integer puntos=0;       //puntos para mostrar en pantalla
     public Ventana() {
         initComponents();
-        Crear c=new Crear(this);
-        c.start();
+        Crear c=new Crear(this);        //se inicializa la clase del hilo 
+        c.start();                      //para comenzar a correr el hilo
     }
 
     /**
@@ -31,15 +30,15 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        usu = new javax.swing.JLabel();
+        punteo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        usu.setText("USUARIO1");
 
-        jLabel2.setText("jLabel2");
+        punteo.setText("PUNTEO: 0");
 
         jButton1.setText("jButton1");
 
@@ -50,8 +49,8 @@ public class Ventana extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(usu)
+                    .addComponent(punteo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(840, Short.MAX_VALUE)
@@ -62,9 +61,9 @@ public class Ventana extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(usu)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(punteo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -107,10 +106,13 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
     }
-
+    public void setPunteo(Integer p){   //ingresar punteo desde una clase exterior
+        puntos+=p;
+        punteo.setText("PUNTEO: "+puntos.toString());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel punteo;
+    private javax.swing.JLabel usu;
     // End of variables declaration//GEN-END:variables
 }

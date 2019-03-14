@@ -3,26 +3,24 @@ package shooting;
  * @author ASKAR
  */
 import java.util.Random;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-public class Crear extends Thread{
-    JFrame ventana;
+public class Crear extends Thread{                                              //se obtiene todos los metodos, variables y cosas para heredar de la clase hilo
+    Ventana ventana;                                                            //ventana para acceder a metodos y variables
 
-    public Crear(JFrame ventana) {
-        this.ventana = ventana;
+    public Crear(Ventana ventana) {
+        this.ventana = ventana;                                                 //constructor para tener acceso a la ventana
     }
 
     @Override
-    public void run() {
-        Integer i=0;
-        while(true){
-            System.out.println("Blanco "+(++i));
-            Circulo b= new Circulo(i.toString());
-            b.setBounds(numRandom(100, 800), numRandom(100, 400), 50, 50);
-            ventana.add(b);
-            ventana.repaint();
+    public void run() {                                                         //metodo para empezar a correr el hilo
+        Integer i=0;                                                            //id del blanco a crear
+        while(true){                                                            //que se corra siempre
+            System.out.println("Blanco "+(++i));                                //impresion en consola que blanco se creó
+            Circulo b= new Circulo(i.toString(),ventana);                       //creacion del blanco
+            b.setBounds(numRandom(100, 800), numRandom(100, 400), 50, 50);      //random(100,800)->posX, random(100,800)->posY,tamaño 50x50
+            ventana.add(b);                                                     //Se añade a la ventana
+            ventana.repaint();                                                  //se actualiza para que se logre ver en pantalla
             try {
-                Thread.sleep(numRandom(2000, 2000));
+                Thread.sleep(numRandom(3000, 5000));                            //espera de 3 a 5 segundos para colocar el siguiente
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -30,8 +28,8 @@ public class Crear extends Thread{
     }
     
     private int numRandom(int min, int max){
-        Random rand=new Random();
-        return rand.nextInt((max-min)+1)+min;
+        Random rand=new Random();                                               //utilizacion de la clase random
+        return rand.nextInt((max-min)+1)+min;                                   //formula para la creacion de un numero aleatorio
         
     }
 }
