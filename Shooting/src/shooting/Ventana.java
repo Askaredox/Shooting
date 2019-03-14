@@ -5,6 +5,8 @@
  */
 package shooting;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author ASKAR
@@ -14,11 +16,16 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
-    Integer puntos=0;       //puntos para mostrar en pantalla
+    Integer puntos=0;                                                           //puntos para mostrar en pantalla
+    LinkedList<Circulo> blancos;
     public Ventana() {
         initComponents();
-        Crear c=new Crear(this);        //se inicializa la clase del hilo 
-        c.start();                      //para comenzar a correr el hilo
+        blancos=new LinkedList<>();
+        Destruir d=new Destruir(this);
+        d.start();
+        Crear c=new Crear(this);                                                //se inicializa la clase del hilo de cracion de circulos
+        c.start();                                                              //para comenzar a correr el hilo de creacion de circulos
+        
     }
 
     /**
@@ -106,7 +113,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
     }
-    public void setPunteo(Integer p){   //ingresar punteo desde una clase exterior
+    public void setPunteo(Integer p){                                           //ingresar punteo desde una clase exterior
         puntos+=p;
         punteo.setText("PUNTEO: "+puntos.toString());
     }

@@ -12,9 +12,11 @@ import javax.swing.JButton;
 public class Circulo extends JButton{
     String id;                                                                  //id de la instancia del circulo
     Ventana v;                                                                  //acceso a ventana
-    public Circulo(String id,Ventana vs) {                                      //obtención del id y de la ventana
+    int tiempo;
+    public Circulo(String id,Ventana vs,int tiempo) {                           //obtención del id y de la ventana
         this.id = id;
         v=vs;
+        this.tiempo=tiempo;
         this.setIcon(getImage("src/Imagenes/diana.png"));                       //direccion de la imagen y utilizacion de metodo para cambiar tamaño
         this.setOpaque(true);                                                   //sin fondo el boton
         this.setBorder(null);                                                   //sin bordes
@@ -25,6 +27,7 @@ public class Circulo extends JButton{
                 Circulo.this.setVisible(false);                                 //se coloca invisible el botón cuando se presione
                 vs.remove(Circulo.this);                                        //se remueve completamente de la ventana
                 vs.setPunteo(10);                                               //se manda a ventana el punteo que se le añadirá
+                vs.blancos.remove(Circulo.this);
             }
         });
     }
