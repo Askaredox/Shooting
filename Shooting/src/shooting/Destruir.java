@@ -3,31 +3,23 @@ package shooting;
  * @author ASKAR
  */
 public class Destruir extends Thread{
+    Circulo c;
     Ventana v;
-    
-    public Destruir(Ventana v) {
+    public Destruir(Circulo c,Ventana v) {
+        this.c = c;
         this.v = v;
     }
 
     @Override
     public void run() {
-        while(true){
-            if(!v.blancos.isEmpty())
-                for(Circulo c:v.blancos){
+        try {
+                Thread.sleep(c.numRandom(1000, 2000));                            //espera de 3 a 5 segundos para colocar el siguiente
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        c.setVisible(false);                                 //se coloca invisible el botón cuando se presione
+                v.remove(c);                                        //se remueve completamente de la ventana
 
-                    if(c.tiempo<0){
-                        System.out.println("boton "+c.id+"|"+c.tiempo);                  //impresion en pantalla de que botón se presionó
-                        c.setVisible(false);                                        //se coloca invisible el botón cuando se presione
-                        v.remove(c);                                                //se remueve completamente de la ventana
-                        v.setPunteo(10);                                            //se manda a ventana el punteo que se le añadirá
-                        v.blancos.remove(c);
-                    }
-                    else{
-                        c.tiempo--;
-                    }
-
-                }
-        }
     }
     
 }

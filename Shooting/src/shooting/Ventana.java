@@ -17,12 +17,9 @@ public class Ventana extends javax.swing.JFrame {
      * Creates new form Ventana
      */
     Integer puntos=0;                                                           //puntos para mostrar en pantalla
-    LinkedList<Circulo> blancos;
     public Ventana() {
         initComponents();
-        blancos=new LinkedList<>();
-        Destruir d=new Destruir(this);
-        d.start();
+        
         Crear c=new Crear(this);                                                //se inicializa la clase del hilo de cracion de circulos
         c.start();                                                              //para comenzar a correr el hilo de creacion de circulos
         
@@ -71,7 +68,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addComponent(usu)
                 .addGap(18, 18, 18)
                 .addComponent(punteo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
